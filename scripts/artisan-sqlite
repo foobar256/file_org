@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Wrapper to run artisan with project-local SQLite extensions enabled.
+# Usage: scripts/artisan-sqlite migrate --force
+
+export PHP_INI_SCAN_DIR="${PHP_INI_SCAN_DIR:-$PWD/.php/conf.d}"
+exec php artisan "$@"
+
